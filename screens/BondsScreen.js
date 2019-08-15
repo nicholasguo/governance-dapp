@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import BondCard from '../components/Bonds/BondCard';
 import { getDeposits } from '../account'
 
@@ -33,7 +33,7 @@ BondsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     paddingBottom: 0,
     backgroundColor: '#fff',
     borderWidth: 1,

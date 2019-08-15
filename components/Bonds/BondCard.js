@@ -13,7 +13,7 @@ export default class BondCard extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
+      <Text style={styles.titleText}>
           { toGold(this.props.value).toString() } Gold bonded with notice period { prettyMilliseconds(this.props.time.toNumber() * 1000, {verbose: true}) } 
         </Text>
       </View>
@@ -24,9 +24,14 @@ export default class BondCard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-    marginBottom: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    marginBottom: 20,
     backgroundColor: '#fff',
     borderWidth: 1,
+  },
+  titleText: {
+    fontSize: 24,
   },
 });

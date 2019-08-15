@@ -1,17 +1,35 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import ValidatorGroupCard from '../components/Validators/ValidatorGroupCard';
+import Swipeout from 'react-native-swipeout'; // 2.1.5
+
+// Buttons
+var swipeoutBtns = [
+  {
+    text: 'Info'
+  },
+  {
+    text: 'Vote',
+    onPress: vote
+  }
+]
+
+function vote() {
+  console.log('vote')
+}
+
+const items = ['ValidatorGroup 1', 'ValidatorGroup 2', 'ValidatorGroup 3']
 
 export default class ValidatorsScreen extends React.Component {
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {/**
-        * Go ahead and delete ExpoLinksView and replace it with your content;
-        * we just wanted to provide you with some helpful links.
-        */}
-        <ExpoLinksView />
-      </ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
+      {items.map((a, idx) =>
+        <Swipeout key={idx} right={swipeoutBtns}>
+          <ValidatorGroupCard title={a}/>
+        </Swipeout>)
+      }
+    </ScrollView>
     );
   }
 }
@@ -23,7 +41,9 @@ ValidatorsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    padding: 20,
+    paddingBottom: 0,
     backgroundColor: '#fff',
+    borderWidth: 1,
   },
 });
