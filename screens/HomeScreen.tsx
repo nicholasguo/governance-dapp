@@ -12,62 +12,66 @@ import {
 import { requestAccountAddress } from "@celo/dappkit";
 import { MonoText } from '../components/StyledText';
 import { Linking } from 'expo';
+import { getDeposits } from '../account'
+import { account } from '../root'
+import BN from 'bn.js'
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
+export default  class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
 
-          <Text style={styles.getStartedText}>Get started by opening</Text>
+    this.state = {};
+  }
 
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
+  fetchDeposits = async (account: string) => {
+    this.setState({ deposits: await getDeposits(account) });
+  };
 
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
+  renderDepositList = () => {
+    if (!this.state.deposits || this.state.deposits.bonded.length == 0) {
+      return (
+        <Item>
+          <Text>No deposits.</Text>
+        </Item>
+      );
+    }
+
+    const deposits = this.state.deposits.bonded.map(deposit => (
+      <ListItem avatar key={memberAddress}>
+        <Left />
+        <Body>
+          <Text>
+            `Bonded Deposit, value: ${deposit.value.toString()}, time: ${deposit.time.toString()}`
           </Text>
-        </View>
+        </Body>
+        <Right />
+      </ListItem>
+    ));
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+    return <List>{deposits}</List>;
+  }
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
 
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
+  render() {
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+          {/**
+           * Go ahead and delete ExpoLinksView and replace it with your content;
+           * we just wanted to provide you with some helpful links.
+           */}
+          <Form style={styles.form}>
+            <Item stackedLabel>
+              <Label>Deposits</Label>
+            </Item>
+
+            {this.renderDepositList()}
+          </Form>
+        </ScrollView>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 HomeScreen.navigationOptions = {
