@@ -57,8 +57,8 @@ export default class HomeScreen extends React.Component {
       );
     }
 
-    const deposits = this.state.deposits.bonded.map(deposit => (
-      <ListItem avatar key={accountAddress}>
+    const deposits = this.state.deposits.bonded.map((deposit, index) => (
+      <ListItem avatar key={index}>
         <Left />
         <Body>
           <Text>

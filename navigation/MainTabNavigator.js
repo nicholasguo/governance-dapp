@@ -4,8 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ValidatorsScreen from '../screens/ValidatorsScreen';
+import BondsScreen from '../screens/BondsScreen';
+import GovernanceScreen from '../screens/GovernanceScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -35,42 +36,57 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const ValidatorsStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Validators: ValidatorsScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+ValidatorsStack.navigationOptions = {
+  tabBarLabel: 'Validators',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
 
-LinksStack.path = '';
-
-const SettingsStack = createStackNavigator(
+const BondsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Bonds: BondsScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+BondsStack.navigationOptions = {
+  tabBarLabel: 'Bonds',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
+BondsStack.path = '';
+
+const GovernanceStack = createStackNavigator(
+  {
+    Governance: GovernanceScreen,
+  },
+  config
+);
+
+GovernanceStack.navigationOptions = {
+  tabBarLabel: 'Governance',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+GovernanceStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  BondsStack,
+  ValidatorsStack,
+  GovernanceStack,
 });
 
 tabNavigator.path = '';
