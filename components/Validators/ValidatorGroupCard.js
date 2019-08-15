@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-export default class BondCard extends React.Component {
+export default class ValidatorGroupCard extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.titleText}>
+        <Text style={styles.titleText}>
           {this.props.title}
         </Text>
       </View>
@@ -18,10 +18,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    marginBottom: 20,
+    padding: 40,
+    marginVertical: 1,
     backgroundColor: '#fff',
-    borderWidth: 1,
   },
   titleText: {
     fontSize: 24,
