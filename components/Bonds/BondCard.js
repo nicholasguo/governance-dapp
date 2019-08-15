@@ -2,6 +2,20 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 const prettyMilliseconds = require('pretty-ms');
 import { web3 } from '../../root'
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Icon,
+  Card,
+  CardItem,
+  Thumbnail,
+  Left,
+  Right,
+  Body
+} from "native-base";
 
 
 const toGold = (wei) => {
@@ -12,26 +26,31 @@ const toGold = (wei) => {
 export default class BondCard extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-      <Text style={styles.titleText}>
-          { toGold(this.props.value).toString() } Gold bonded with notice period { prettyMilliseconds(this.props.time.toNumber() * 1000, {verbose: true}) } 
-        </Text>
-      </View>
+        <Content padder>
+          <Card style={styles.mb}>
+            <CardItem header>
+              <Text style={styles.noticePeriod}>{ prettyMilliseconds(this.props.time.toNumber() * 1000, {verbose: true}) }</Text>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text style={styles.value}>
+                  { toGold(this.props.value).toString() }
+                </Text>
+              </Body>
+            </CardItem>
+          </Card>
+        </Content>
     )
   };
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    marginBottom: 20,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-  },
-  titleText: {
+  noticePeriod: {
     fontSize: 24,
+    textAlign: 'left',
+  },
+  value: {
+    fontSize: 24,
+    textAlign: 'center',
   },
 });
