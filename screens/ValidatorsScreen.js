@@ -18,18 +18,20 @@ function vote() {
   console.log('vote')
 }
 
-export default function ValidatorsScreen() {
-  // call a bunch of things to fetch data here, feel free to make new
-  const items = ['ValidatorGroup 1', 'ValidatorGroup 2', 'ValidatorGroup 3']
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
+const items = ['ValidatorGroup 1', 'ValidatorGroup 2', 'ValidatorGroup 3']
+
+export default class ValidatorsScreen extends React.Component {
+  render() {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
       {items.map((a, idx) =>
         <Swipeout key={idx} right={swipeoutBtns}>
           <ValidatorGroupCard title={a}/>
         </Swipeout>)
       }
     </ScrollView>
-  );
+    );
+  }
 }
 
 ValidatorsScreen.navigationOptions = {

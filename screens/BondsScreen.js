@@ -2,14 +2,23 @@ import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import BondCard from '../components/Bonds/BondCard';
 
-export default function BondsScreen() {
-  // call a bunch of things to fetch data here, feel free to make new
-  const items = ['Bond 1', 'Bond 2', 'Bond 3']
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {items.map((a, idx) => <BondCard key={idx} title={a}/>)}
-    </ScrollView>
-  );
+export default class BondsScreen extends React.Component {
+  constructor() {
+    super()
+    this.state = {items: []}
+  }
+
+  async componentDidMount() {
+    this.setState({items: ['Bond 1', 'Bond 2', 'Bond 3']})
+  }
+
+  render() {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        {this.state.items.map((a, idx) => <BondCard key={idx} title={a}/>)}
+      </ScrollView>
+    );
+  }
 }
 
 BondsScreen.navigationOptions = {
