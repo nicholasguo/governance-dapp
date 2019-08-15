@@ -3,15 +3,20 @@ import { Button, Text, View, ScrollView, StyleSheet } from 'react-native';
 import Modal from "react-native-modal";
 import BondCard from '../components/Bonds/BondCard';
 import AddBond from '../components/Bonds/AddBond';
+import { getDeposits } from '../account'
 
 export default class BondsScreen extends React.Component {
   constructor() {
     super()
-    this.state = {items: [], modalVisible: false}
+    this.state = {bonded: [], notified: [], modalVisible: false}
   }
 
   async componentDidMount() {
-    this.setState({items: ['Bond 1', 'Bond 2', 'Bond 3']})
+    const cmp = (a, b) => {
+      return a.time.cmp(b.time)
+    }
+    const deposits = await getDeposits('0x47e172f6cfb6c7d01c1574fa3e2be7cc73269d95')
+    this.setState({ bonded: deposits.bonded.sort(cmp), notified: deposits.notified.sort(cmp)})
   }
 
   toggleModal = () => {
@@ -28,7 +33,7 @@ export default class BondsScreen extends React.Component {
         >
           <AddBond />
         </Modal>
-        {this.state.items.map((a, idx) => <BondCard key={idx} title={a}/>)}
+        {this.state.bonded.map((deposit, i) => <BondCard key={i} value={deposit.value} time={deposit.time}/>)}
       </ScrollView>
     );
   }
@@ -41,7 +46,7 @@ BondsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     paddingBottom: 0,
     backgroundColor: '#fff',
     borderWidth: 1,

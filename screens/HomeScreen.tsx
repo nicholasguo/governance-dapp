@@ -35,7 +35,6 @@ import { getDeposits } from '../account'
 import { accountAddress } from '../root'
 import BN from 'bn.js'
 
-
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
