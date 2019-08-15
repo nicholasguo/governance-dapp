@@ -1,12 +1,20 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+const prettyMilliseconds = require('pretty-ms');
+import { web3 } from '../../root'
+
+
+const toGold = (wei) => {
+  return web3.utils.fromWei(wei, 'ether')
+}
+
 
 export default class BondCard extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          {this.props.title}
+          { toGold(this.props.value).toString() } Gold bonded with notice period { prettyMilliseconds(this.props.time.toNumber() * 1000, {verbose: true}) } 
         </Text>
       </View>
     )

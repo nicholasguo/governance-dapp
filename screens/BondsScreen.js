@@ -1,21 +1,26 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import BondCard from '../components/Bonds/BondCard';
+import { getDeposits } from '../account'
 
 export default class BondsScreen extends React.Component {
   constructor() {
     super()
-    this.state = {items: []}
+    this.state = {bonded: [], notified: []}
   }
 
   async componentDidMount() {
-    this.setState({items: ['Bond 1', 'Bond 2', 'Bond 3']})
+    const cmp = (a, b) => {
+      return a.time.cmp(b.time)
+    }
+    const deposits = await getDeposits('0x47e172f6cfb6c7d01c1574fa3e2be7cc73269d95')
+    this.setState({ bonded: deposits.bonded.sort(cmp), notified: deposits.notified.sort(cmp)})
   }
 
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        {this.state.items.map((a, idx) => <BondCard key={idx} title={a}/>)}
+        {this.state.bonded.map((deposit, i) => <BondCard key={i} value={deposit.value} time={deposit.time}/>)}
       </ScrollView>
     );
   }
