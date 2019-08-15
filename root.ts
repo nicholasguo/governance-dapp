@@ -1,6 +1,7 @@
-import { newWeb3, newKitFromWeb3 } from '@celo/contractkit'
-export const web3 = newWeb3("https://alfajores-infura.celo-testnet.org");
-export const kit = newKitFromWeb3(web3)
+import { newWeb3, newKitFromWeb3, newKit } from '@celo/contractkit'
+export const web3 = newWeb3("https://integration-infura.celo-testnet.org")
+web3.eth.getBlock('latest').then(console.log)
+export const kit = newKit("https://integration-infura.celo-testnet.org")
+export const kit3 = newKitFromWeb3(web3)
 // Validator 0
-export const account = '0x456f41406b32c45d59e539e4bba3d7898c3584da'
-
+export const accountAddress = '0x47e172f6cfb6c7d01c1574fa3e2be7cc73269d95'

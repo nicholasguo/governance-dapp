@@ -12,7 +12,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@celo/contractkit": "^0.0.5-beta1",
+    "@celo/contractkit": "0.0.5-beta3",
     "@celo/dappkit": "0.0.1-v",
     "@expo/samples": "~3.0.3",
     "@expo/vector-icons": "^10.0.3",
@@ -23,6 +23,7 @@
     "expo-constants": "6.0.0",
     "expo-font": "~6.0.0",
     "expo-web-browser": "6.0.0",
+    "native-base": "^2.13.4",
     "node-libs-react-native": "^1.0.3",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
@@ -31,7 +32,8 @@
     "react-native-web": "^0.11.4",
     "react-navigation": "^3.11.0",
     "vm-browserify": "^1.1.0",
-    "web3": "1.0.0-beta.37"
+    "web3": "1.0.0-beta.37",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "@types/expo": "^32.0.0",

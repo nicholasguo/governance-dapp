@@ -1,6 +1,25 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
+  Container,
+  Header,
+  Content,
+  Footer,
+  Left,
+  Button,
+  Icon,
+  FooterTab,
+  Body,
+  Title,
+  Right,
+  Form,
+  Item,
+  Input,
+  Label,
+  List,
+  ListItem
+} from "native-base";
+import {
   Image,
   Platform,
   ScrollView,
@@ -13,11 +32,11 @@ import { requestAccountAddress } from "@celo/dappkit";
 import { MonoText } from '../components/StyledText';
 import { Linking } from 'expo';
 import { getDeposits } from '../account'
-import { account } from '../root'
+import { accountAddress } from '../root'
 import BN from 'bn.js'
 
 
-export default  class HomeScreen extends React.Component {
+export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +44,7 @@ export default  class HomeScreen extends React.Component {
   }
 
   fetchDeposits = async (account: string) => {
-    this.setState({ deposits: await getDeposits(account) });
+    this.setState({ deposits: await getDeposits('0x47e172f6cfb6c7d01c1574fa3e2be7cc73269d95') });
   };
 
   renderDepositList = () => {
@@ -33,16 +52,20 @@ export default  class HomeScreen extends React.Component {
       return (
         <Item>
           <Text>No deposits.</Text>
+          <Text>Account is {accountAddress}</Text>
         </Item>
       );
     }
 
     const deposits = this.state.deposits.bonded.map(deposit => (
-      <ListItem avatar key={memberAddress}>
+      <ListItem avatar key={accountAddress}>
         <Left />
         <Body>
           <Text>
-            `Bonded Deposit, value: ${deposit.value.toString()}, time: ${deposit.time.toString()}`
+						{accountAddress}
+          </Text>
+          <Text>
+            Bonded Deposit, value: {deposit.value.toString()}, time: {deposit.time.toString()}
           </Text>
         </Body>
         <Right />
@@ -52,6 +75,10 @@ export default  class HomeScreen extends React.Component {
     return <List>{deposits}</List>;
   }
 
+  componentDidMount = async () => {
+    console.log(accountAddress)
+    await this.fetchDeposits(accountAddress)
+  }
 
   render() {
     return (

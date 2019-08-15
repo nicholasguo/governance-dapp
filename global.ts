@@ -4,6 +4,7 @@ export interface Global {
     self: any
     Buffer: any
     process: any
+    location: any
   }
 
 declare var global: Global
@@ -18,3 +19,6 @@ if (typeof btoa === 'undefined') {
 
 global.Buffer = require('buffer').Buffer;
 global.process = require('process');
+global.location = {
+    protocol: 'https'
+}
