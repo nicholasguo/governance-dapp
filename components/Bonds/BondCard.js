@@ -6,7 +6,7 @@ export default class BondCard extends React.Component {
     return (
       <View style={styles.container}>
         <Text>
-          BondCard
+          {this.props.title}
         </Text>
       </View>
     )
@@ -16,7 +16,8 @@ export default class BondCard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    padding: 15,
+    marginBottom: 15,
     backgroundColor: '#fff',
     borderWidth: 1,
   },
