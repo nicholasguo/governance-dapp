@@ -1,35 +1,53 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import Modal from "react-native-modal";
 import ValidatorGroupCard from '../components/Validators/ValidatorGroupCard';
-import Swipeout from 'react-native-swipeout'; // 2.1.5
-
-// Buttons
-var swipeoutBtns = [
-  {
-    text: 'Info'
-  },
-  {
-    text: 'Vote',
-    onPress: vote
-  }
-]
-
-function vote() {
-  console.log('vote')
-}
-
-const items = ['ValidatorGroup 1', 'ValidatorGroup 2', 'ValidatorGroup 3']
+import ValidatorGroupInfo from '../components/Validators/ValidatorGroupInfo';
+import { getValidatorGroups, revokeVote, vote } from '../account'
 
 export default class ValidatorsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {groups: [], viewGroup: -1, voteGroup: -1};
+  }
+
+  async componentDidMount() {
+    const cmp = (a, b) => {
+      return a.name.cmp(b.name)
+    }
+    // Get validator groups
+    const validatorGroups = await getValidatorGroups()
+    this.setState({ groups: validatorGroups.sort(cmp) })
+  }
+
+  async switchVote() {
+    newVote = this.state.viewGroup != this.state.voteGroup
+    await revokeVote()
+    if (newVote) {
+      await vote(this.state.groups[this.state.viewGroup].address)
+    }
+    this.setState({ viewGroup: idx, voteGroup: newVote ? this.state.viewGroup : -1 });
+  }
+
+  toggleGroup(idx) {
+    this.setState({ viewGroup: idx });
+  }
+
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-      {items.map((a, idx) =>
-        <Swipeout key={idx} right={swipeoutBtns}>
-          <ValidatorGroupCard title={a}/>
-        </Swipeout>)
-      }
-    </ScrollView>
+        <Modal
+          isVisible={this.state.viewGroup != -1}
+          onBackdropPress={() => this.setState({ viewGroup: -1 })}>
+          <ValidatorGroupInfo
+            group={this.state.groups[this.state.viewGroup]}
+            onVote={() => this.switchVote()}
+            voted={this.state.viewGroup == this.state.voteGroup} />
+        </Modal>
+        {this.state.groups.map((group, idx) =>
+          <ValidatorGroupCard key={idx} title={group.name} voted={idx == this.state.voteGroup} onPress={() => this.toggleGroup(idx)}/>
+        )}
+      </ScrollView>
     );
   }
 }

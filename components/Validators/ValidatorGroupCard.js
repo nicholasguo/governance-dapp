@@ -1,28 +1,30 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default class ValidatorGroupCard extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.titleText}>
+      <TouchableOpacity style={this.props.voted ? [styles.container, styles.voted]: styles.container} onPress={this.props.onPress}>
+        <Text style={styles.title}>
           {this.props.title}
         </Text>
-      </View>
+      </TouchableOpacity>
     )
   };
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 40,
-    marginVertical: 1,
-    backgroundColor: '#fff',
+    padding: 30,
+    margin: 1,
+    backgroundColor: '#ccc',
   },
-  titleText: {
+  title: {
     fontSize: 24,
   },
+  voted: {
+    borderWidth: 5,
+  }
 });
