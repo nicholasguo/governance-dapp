@@ -17,7 +17,6 @@ import {
   Body
 } from "native-base";
 
-
 const toGold = (wei) => {
   return web3.utils.fromWei(wei, 'ether')
 }
@@ -30,6 +29,7 @@ export default class BondCard extends React.Component {
           <Card style={styles.mb}>
             <CardItem header>
               <Text style={styles.noticePeriod}>{ prettyMilliseconds(this.props.time.toNumber() * 1000, {verbose: true}) }</Text>
+              <Text style={styles.multiplier}>{ this.props.multiplier.toString() }</Text>
             </CardItem>
             <CardItem>
               <Body>
@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
   noticePeriod: {
     fontSize: 24,
     textAlign: 'left',
+  },
+  multiplier: {
+    textAlign: 'right',
   },
   value: {
     fontSize: 24,
