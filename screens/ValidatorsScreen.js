@@ -22,11 +22,13 @@ export default class ValidatorsScreen extends React.Component {
 
   async switchVote() {
     newVote = this.state.viewGroup != this.state.voteGroup
-    await revokeVote()
+    if (this.state.voteGroup != -1) {
+      await revokeVote()
+    }
     if (newVote) {
       await vote(this.state.groups[this.state.viewGroup].address)
     }
-    this.setState({ viewGroup: idx, voteGroup: newVote ? this.state.viewGroup : -1 });
+    this.setState({ viewGroup: -1, voteGroup: newVote ? this.state.viewGroup : -1 });
   }
 
   toggleGroup(idx) {
