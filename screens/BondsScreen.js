@@ -4,6 +4,7 @@ import Modal from "react-native-modal";
 import BondCard from '../components/Bonds/BondCard';
 import { getDeposits, getDepositMultiplier } from '../account'
 import AddBond from '../components/Bonds/AddBond';
+import { deposit } from '../account'
 
 export default class BondsScreen extends React.Component {
   constructor(props) {
