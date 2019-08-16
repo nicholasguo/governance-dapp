@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,TouchableOpacity, View, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 const prettyMilliseconds = require('pretty-ms');
 import { web3 } from '../../root'
 import {
@@ -20,7 +20,6 @@ import {
 const toGold = (wei) => {
   return web3.utils.fromWei(wei, 'ether')
 }
-
 
 export default class BondCard extends React.Component {
 	navigateToBondScreen = () => {

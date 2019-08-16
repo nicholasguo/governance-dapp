@@ -955,19 +955,21 @@
     web3 "1.0.0-beta.37"
     web3-utils "1.0.0-beta.37"
 
-"@celo/dappkit@0.0.1-v":
-  version "0.0.1-v"
-  resolved "https://registry.yarnpkg.com/@celo/dappkit/-/dappkit-0.0.1-v.tgz#5287f321c2d1424e15fc762c49378838e7dc8d73"
-  integrity sha512-mx4R25N4Rzg3aKZVyAzxRvGT2ohxMCIb6Cj6u1SvNcvI/s4C74Lywc2zsWINR34lQvM8PwiWz9HQzHPZkFJjVw==
+"@celo/dappkit@0.0.1-aa":
+  version "0.0.1-aa"
+  resolved "https://registry.yarnpkg.com/@celo/dappkit/-/dappkit-0.0.1-aa.tgz#90fe94a5ee6caf20d64b0721f063cc3a193b31a2"
+  integrity sha512-sjJ768hFKgqnwqe/2q4X4543/Hiu+uM2NHIJIkhMpENXZSyqtSdPm4pOFNSsDduUFROQ6G9Irq3OkmlljIqY3g==
   dependencies:
-    "@celo/utils" "0.0.5-dappkit8"
-    "@celo/walletkit" "0.0.4-dappkit3"
+    "@celo/utils" "0.0.5-dappkit9"
+    "@celo/walletkit" "0.0.4"
     expo "^34.0.1"
+    expo-contacts "6.0.0"
+    libphonenumber-js "^1.7.22"
 
-"@celo/utils@0.0.5-dappkit8", "@celo/utils@^0.0.5-dappkit3":
-  version "0.0.5-dappkit8"
-  resolved "https://registry.yarnpkg.com/@celo/utils/-/utils-0.0.5-dappkit8.tgz#22d36264af094717634abd291ac9ccf2e9c2f3fe"
-  integrity sha512-A+7OYmbiq0XVQnYP9H5z1iWWFAqoDlSAqA0wcI6GzYzz8kBzaTjP9yaqbBiVsy6gG3Tyl97x6EFYCWYMKMa/RQ==
+"@celo/utils@0.0.5-dappkit9":
+  version "0.0.5-dappkit9"
+  resolved "https://registry.yarnpkg.com/@celo/utils/-/utils-0.0.5-dappkit9.tgz#27b80e5cb5c89b69f2a0d7e540d1ec336d25a0f5"
+  integrity sha512-kLs6aT+/+o6XCnUKwnvNLReewpSJuqhpZ2Hib1DQJO1A5g77t/yGlcFMhiQNXtX4RK2IYNouBcVhgdBlkNijmQ==
   dependencies:
     "@umpirsky/country-list" "git://github.com/umpirsky/country-list#05fda51"
     bignumber.js "^7.2.0"
@@ -982,7 +984,7 @@
     typescript "^3.3.3"
     web3-utils "1.0.0-beta.37"
 
-"@celo/utils@^0.0.6-beta3":
+"@celo/utils@0.0.6-beta3", "@celo/utils@^0.0.6-beta3":
   version "0.0.6-beta3"
   resolved "https://registry.yarnpkg.com/@celo/utils/-/utils-0.0.6-beta3.tgz#162452483c63cc8bcd2914a4a1040e7760afe7cf"
   integrity sha512-23qStc+yNr15So3RIzIilqjGM9VVk9X+1D0bpB0s4KCH0RTDGls6hlSoBYcWpmuSf0Z0LpaN0dSns9/sk12NyA==
@@ -999,13 +1001,13 @@
     lodash "^4.17.14"
     web3-utils "1.0.0-beta.37"
 
-"@celo/walletkit@0.0.4-dappkit3":
-  version "0.0.4-dappkit3"
-  resolved "https://registry.yarnpkg.com/@celo/walletkit/-/walletkit-0.0.4-dappkit3.tgz#e9b1cb51f8a38368af665d4896f61812a67e186a"
-  integrity sha512-5I70lA7f63HdSB7IuY2v9PKoAXDIkJf2W3ifZvL2Pp8x4Mp2VGuVbp+IglMxLVsB3TjRHdZBRQdEKGwdc0BS0w==
+"@celo/walletkit@0.0.4":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@celo/walletkit/-/walletkit-0.0.10.tgz#d6cd63b71718c83c74dcf811136fd50be7827fb5"
+  integrity sha512-A4mUWmG19Vxlaxug22nkVGpSTZ7vMZMCxQAdujDxyJrrd96Jx7KRfIyb1FsFyeVQE03+V4+JTKheV2IvawTivw==
   dependencies:
     "@0x/subproviders" "^4.1.0"
-    "@celo/utils" "^0.0.5-dappkit3"
+    "@celo/utils" "0.0.6-beta3"
     "@google-cloud/storage" "^2.3.3"
     "@types/jest" "^24.0.13"
     babel-jest "^24.8.0"
@@ -1676,6 +1678,11 @@
 "@umpirsky/country-list@git://github.com/umpirsky/country-list#05fda51":
   version "1.0.0"
   resolved "git://github.com/umpirsky/country-list#05fda51cd97b3294e8175ffed06104c44b3c71d7"
+
+"@umpirsky/country-list@git://github.com/umpirsky/country-list.git#05fda51":
+  version "1.0.0"
+  uid "05fda51cd97b3294e8175ffed06104c44b3c71d7"
+  resolved "git://github.com/umpirsky/country-list.git#05fda51cd97b3294e8175ffed06104c44b3c71d7"
 
 "@unimodules/core@~3.0.0":
   version "3.0.2"
@@ -5223,6 +5230,13 @@ expo-constants@6.0.0, expo-constants@~6.0.0:
   dependencies:
     ua-parser-js "^0.7.19"
 
+expo-contacts@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/expo-contacts/-/expo-contacts-6.0.0.tgz#6db388806c6c4d77e0a39fc0277b4535454fdde4"
+  integrity sha512-DhPno7HKBa+r3sAhtyyCaUY9w4baqOsLUFYFZ7kRvB49qHOVAqJ1uioy+Ut3YWMHrFAgdmNyqcutzNwfK8up/w==
+  dependencies:
+    uuid-js "^0.7.5"
+
 expo-file-system@~6.0.0:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-6.0.2.tgz#e65f30eb6a7213e07933df9688116eaf4e25bbf8"
@@ -7963,6 +7977,14 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+libphonenumber-js@^1.7.22:
+  version "1.7.22"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.22.tgz#e206e3c227ec47ff306f7405ac52c331911e1b35"
+  integrity sha512-KCK4874gp640B+d1zjNi2ZiZ3ubEUPH/0B9AwcuhHDVAL6NdthxC8obbdhGlo7FcEpjFVwEMDoHRfi+lI8NM/g==
+  dependencies:
+    minimist "^1.2.0"
+    xml2js "^0.4.17"
 
 liftoff@^3.1.0:
   version "3.1.0"
@@ -11022,7 +11044,7 @@ sane@^4.0.3:
     minimist "^1.1.1"
     walker "~1.0.5"
 
-sax@^1.2.4:
+sax@>=0.6.0, sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
@@ -13450,7 +13472,15 @@ xml-name-validator@^3.0.0:
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
 
-xmlbuilder@^9.0.7:
+xml2js@^0.4.17:
+  version "0.4.19"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
+  integrity sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
+  dependencies:
+    sax ">=0.6.0"
+    xmlbuilder "~9.0.1"
+
+xmlbuilder@^9.0.7, xmlbuilder@~9.0.1:
   version "9.0.7"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
   integrity sha1-Ey7mPS7FVlxVfiD0wi35rKaGsQ0=
