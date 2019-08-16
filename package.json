@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@celo/contractkit": "0.0.5-beta3",
-    "@celo/dappkit": "0.0.1-v",
+    "@celo/dappkit": "0.0.1-aa",
     "@expo/samples": "~3.0.3",
     "@expo/vector-icons": "^10.0.3",
     "@react-native-community/slider": "^2.0.0",

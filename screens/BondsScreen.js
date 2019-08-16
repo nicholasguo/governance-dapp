@@ -4,7 +4,6 @@ import Modal from "react-native-modal";
 import BondCard from '../components/Bonds/BondCard';
 import { getDeposits, getDepositMultiplier } from '../account'
 import AddBond from '../components/Bonds/AddBond';
-import { deposit } from '../account'
 
 export default class BondsScreen extends React.Component {
   constructor(props) {
@@ -42,7 +41,7 @@ export default class BondsScreen extends React.Component {
           isVisible={this.state.modalVisible}
           onBackdropPress={() => this.setState({ modalVisible: false })}
         >
-          <AddBond />
+          <AddBond toggle={this.toggleModal}/>
         </Modal>
       {this.renderBondedDepositsList()}
       </ScrollView>
