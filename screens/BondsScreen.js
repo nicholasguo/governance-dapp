@@ -1,12 +1,14 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { Button, Text, View, ScrollView, StyleSheet } from 'react-native';
+import Modal from "react-native-modal";
 import BondCard from '../components/Bonds/BondCard';
 import { getDeposits, getDepositMultiplier } from '../account'
+import AddBond from '../components/Bonds/AddBond';
 
 export default class BondsScreen extends React.Component {
-  constructor() {
-    super()
-    this.state = {bonded: [], notified: []}
+  constructor(props) {
+    super(props)
+    this.state = {bonded: [], notified: [], modalVisible: false}
   }
 
   async componentDidMount() {
@@ -19,10 +21,29 @@ export default class BondsScreen extends React.Component {
     this.setState({ bonded: bondedWithMultipliers.sort(cmp), notified: deposits.notified.sort(cmp)})
   }
 
+  toggleModal = () => {
+    this.setState({ modalVisible: !this.state.modalVisible });
+  };
+
+  renderBondedDepositsList = () => {
+    if (this.state.bonded) {
+      return this.state.bonded.map((deposit, i) => <BondCard key={i} value={deposit.value} time={deposit.time} multiplier={deposit.multiplier} navigation={this.props.navigation}/>)
+    } else { 
+      return (<Text>You currently have no bonds</Text>)
+    }
+  }
+
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        {this.state.bonded.map((deposit, i) => <BondCard key={i} value={deposit.value} time={deposit.time} multiplier={deposit.multiplier}/>)}
+        <Button title="Show modal" onPress={this.toggleModal} />
+        <Modal
+          isVisible={this.state.modalVisible}
+          onBackdropPress={() => this.setState({ modalVisible: false })}
+        >
+          <AddBond />
+        </Modal>
+      {this.renderBondedDepositsList()}
       </ScrollView>
     );
   }

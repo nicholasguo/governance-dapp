@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ValidatorsScreen from '../screens/ValidatorsScreen';
 import BondsScreen from '../screens/BondsScreen';
+import BondScreen from '../screens/BondScreen';
 import GovernanceScreen from '../screens/GovernanceScreen';
 
 const config = Platform.select({
@@ -53,6 +54,7 @@ ValidatorsStack.navigationOptions = {
 const BondsStack = createStackNavigator(
   {
     Bonds: BondsScreen,
+    Bond: BondScreen,
   },
   config
 );
